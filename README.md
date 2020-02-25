@@ -4,7 +4,7 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/abilists/letter_utility)
 
 
-[Utility][1] is a collection for helping to develop a project.  
+[letter_utility][1] is a collection for helping to develop a project.  
 It is based on [Java8][2] version, It uses some common libraries.
 
 Utility_sample is:
@@ -59,6 +59,6 @@ Download from Github
     $ git clone https://github.com/abilists/letter_utility.git
 
 
-[1]: https://github.com/abilists/letter_utility "Utility"
+[1]: https://github.com/abilists/letter_utility "letter_utility"
 [2]: https://github.com/ojdkbuild/ojdkbuild "Java8"
 [3]: http://www.abilists.com/home/help/ "Abilists Help"
