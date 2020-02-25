@@ -1,10 +1,7 @@
-Letter Utility
-==============
-
-\[ [About](https://github.com/abilists/letter_utility) •
-[Install](https://github.com/abilists/letter_utility) • [Blog](http://njoonk.blogspot.jp/) \]
-
-[![Build Status](https://travis-ci.org/abilists/letter_utility.svg?branch=master)](https://travis-ci.org/abilists/abilists.svg)
+# letter_utility library for Abilists \[ [www.abilists.com](http://www.abilists.com)\]
+--------------------------------------------------
+[![Build Status](https://travis-ci.org/abilists/letter_utility.svg?branch=master)](https://travis-ci.org/abilists/letter_utility)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/abilists/letter_utility)
 
 
 [Utility][1] is a collection for helping to develop a project.  
@@ -19,6 +16,11 @@ How to use
 ---------------------
 $ gradle install
 
+Add the following code into build.gradle in your new project.
+```
+compile 'io.utility:image:0.0.2'
+```
+
 Features
 -------------
    * Utile: Letter
@@ -27,12 +29,12 @@ Features
      * EncodingUtility:
      * FileUtility:
      * StringUtility:
-     * ValidateUtility:
+     * TemplateUtility:
 
 Build Requirements
 ------------------
 
-Eclipse 4.2 (or newer)
+Freemarker 2.3.28 (or newer)
 
 
 Runtime Requirements
@@ -48,7 +50,7 @@ Running Tests
 
 Forum
 -----
-  * [My blog][3]
+  * [Abilists Help][3]
 
 
 Download from Github
@@ -57,6 +59,6 @@ Download from Github
     $ git clone https://github.com/abilists/letter_utility.git
 
 
-[1]: https://github.com/minziappa/utility/tree/master/letter_utility "Utility"
-[2]: http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html "Java7"
-[3]: http://njoonk.blogspot.jp/ "My blog"
+[1]: https://github.com/abilists/letter_utility "Utility"
+[2]: https://github.com/ojdkbuild/ojdkbuild "Java8"
+[3]: http://www.abilists.com/home/help/ "Abilists Help"
