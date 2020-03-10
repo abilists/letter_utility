@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 public class DateUtility {
 
@@ -16,6 +17,35 @@ public class DateUtility {
 	public static int DIFF_MINUTES = (60 * 1000) % 60;
 	public static int DIFF_HOURS = (60 * 60 * 1000) % 24;
 	public static int DIFF_DAYS = (24 * 60 * 60 * 1000);
+
+	 /**
+     * Convert a millisecond duration to a string format
+     * 
+     * @param millis A duration to convert to a string form
+     * @return A string of the form "X Days Y Hours Z Minutes A Seconds".
+     */
+    public static String getDurationBreakdown(long millis) {
+        if(millis < 0) {
+            throw new IllegalArgumentException("Duration must be greater than zero!");
+        }
+
+        long days = TimeUnit.MILLISECONDS.toDays(millis);
+        millis -= TimeUnit.DAYS.toMillis(days);
+        long hours = TimeUnit.MILLISECONDS.toHours(millis);
+        millis -= TimeUnit.HOURS.toMillis(hours);
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(millis);
+        millis -= TimeUnit.MINUTES.toMillis(minutes);
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(millis);
+
+        StringBuilder sb = new StringBuilder(64);
+        sb.append(String.format("%02d", hours));
+        sb.append(":");
+        sb.append(String.format("%02d", minutes));
+        sb.append(":");
+        sb.append(String.format("%02d", seconds));
+
+        return(sb.toString());
+    }
 
     public static String convertMillisToString(long millisTime) {
     	StringBuffer sb = new StringBuffer();
