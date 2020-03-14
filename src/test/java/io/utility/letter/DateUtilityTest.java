@@ -40,7 +40,7 @@ public class DateUtilityTest {
 		System.out.println("This is the test");
 	}
 
-	@Test
+	//@Test
 	public void formatDateTest() {
 		
 		try {
@@ -73,10 +73,27 @@ public class DateUtilityTest {
 		System.out.println("This is the test");
 	}
 	
-	@Test
+	// @Test
 	public void calculateMonthPeriodTest() {
-		int period = DateUtility.calculateMonthPeriod(2016, 10, 2017, 5);
-		Assert.assertEquals(8, period);
+		Date days = DateUtility.getDayInMillisBefore(30);
+		String strDays = DateUtility.formatDate(days, "yyyy-MM-dd");
+		System.out.println("days = " + strDays);
+	}
+
+	@Test
+	public void cltDaysPeriodTest() {
+		Date days1 = DateUtility.getDayInMillisBefore(2);
+		System.out.println("Last day = " + DateUtility.formatDate(days1, "yyyy-MM-dd"));
+		Date days2 = DateUtility.getDayInMillisBefore(1);
+		System.out.println("Today = " + DateUtility.formatDate(days2, "yyyy-MM-dd"));
+		
+		System.out.println("========================================================= start ");
+		long days3 = DateUtility.minusDateDays(days2, days1);
+		
+		for(int i=(int) days3 ; 1 < i ; i--) {
+			System.out.println("days = " + DateUtility.formatDate(DateUtility.getDayInMillisBefore(i), "yyyy-MM-dd"));			
+		}
+		System.out.println("========================================================= end ");
 	}
 
 	@After

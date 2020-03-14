@@ -9,14 +9,14 @@ import java.util.concurrent.TimeUnit;
 
 public class DateUtility {
 
-	public static int MINUTE_IN_MILLIS = 60000;
-	public static int HOUR_IN_MILLIS = 3600000;
-	public static int DAY_IN_MILLIS = 86400000;
+	public static long MINUTE_IN_MILLIS = 60000;
+	public static long HOUR_IN_MILLIS = 3600000;
+	public static long DAY_IN_MILLIS = 86400000;
 	public static String DEFAULT_FORMAT_DATE = "yyyy/MM/dd HH:mm:ss";
-	public static int DIFF_SECONDS = 1000 % 60;
-	public static int DIFF_MINUTES = (60 * 1000) % 60;
-	public static int DIFF_HOURS = (60 * 60 * 1000) % 24;
-	public static int DIFF_DAYS = (24 * 60 * 60 * 1000);
+	public static long DIFF_SECONDS = 1000 % 60;
+	public static long DIFF_MINUTES = (60 * 1000) % 60;
+	public static long DIFF_HOURS = (60 * 60 * 1000) % 24;
+	public static long DIFF_DAYS = (24 * 60 * 60 * 1000);
 
 	 /**
      * Convert a millisecond duration to a string format
@@ -67,14 +67,16 @@ public class DateUtility {
 		return convertMillisToDate(plusedDate);
 	}
 
-	public static Date minusDate(Date factor1, Date factor2) {
+	public static int minusDateDays(Date factor1, Date factor2) {
 
 		long d1 = factor1.getTime();
 		long d2 = factor2.getTime();
 
 		long minusedDate = d1 - d2;
+		
+		long diffDay = minusedDate / DIFF_DAYS;
 
-		return convertMillisToDate(minusedDate);
+		return (int) diffDay;
 	}
 
 	public static Date convertMillisToDate(long millisTime) {
@@ -112,7 +114,7 @@ public class DateUtility {
 		return calSevenDay.getTime();
 	}
 
-	public static Date getMinuteInMillisAfter(int afterMinute) {
+	public static Date getMinuteInMillisAfter(long afterMinute) {
 
 		long currentMillis = 0;
 
@@ -128,7 +130,7 @@ public class DateUtility {
 		return afterSevenDate;
 	}
 
-	public static Date getMinuteInMillisBefore(int beforeMinute) {
+	public static Date getMinuteInMillisBefore(long beforeMinute) {
 	
 		long currentMillis = 0;
 	
@@ -144,7 +146,7 @@ public class DateUtility {
 		return afterSevenDate;
 	}
 
-	public static Date getHourInMillisAfter(int afterDate) {
+	public static Date getHourInMillisAfter(long afterDate) {
 
 		long currentMillis = 0;
 
@@ -160,7 +162,7 @@ public class DateUtility {
 		return afterSevenDate;
 	}
 
-	public static Date getDayInMillisAfter(int afterDate) {
+	public static Date getDayInMillisAfter(long afterDate) {
 
 		long currentMillis = 0;
 
@@ -176,7 +178,7 @@ public class DateUtility {
 		return afterSevenDate;
 	}
 
-	public static Date getHourInMillisBefore(int beforeHour) {
+	public static Date getHourInMillisBefore(long beforeHour) {
 
 		long currentMillis = 0;
 
@@ -192,15 +194,16 @@ public class DateUtility {
 		return afterSevenDate;
 	}
 
-	public static Date getDayInMillisBefore(int beforeDay) {
+	public static Date getDayInMillisBefore(long beforeDay) {
 
 		long currentMillis = 0;
 
 		// Set two hour
 		currentMillis = System.currentTimeMillis();
+		long longBeforDay = DAY_IN_MILLIS * beforeDay;
 
 		// After seven days of a year, its axis of current time
-		long afterSevenMillis = currentMillis - DAY_IN_MILLIS * beforeDay;
+		long afterSevenMillis = currentMillis - longBeforDay;
 
 		Calendar calSevenDay = Calendar.getInstance();
 		calSevenDay.setTimeInMillis(afterSevenMillis);
