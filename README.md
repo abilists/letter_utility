@@ -18,7 +18,7 @@ $ gradle install
 
 Add the following code into build.gradle in your new project.
 ```
-compile 'io.utility:image:0.0.2'
+compile 'io.utility:image:0.0.4'
 ```
 
 Features
