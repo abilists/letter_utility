@@ -17,6 +17,13 @@ public class DateUtility {
 	public static long DIFF_MINUTES = (60 * 1000) % 60;
 	public static long DIFF_HOURS = (60 * 60 * 1000) % 24;
 	public static long DIFF_DAYS = (24 * 60 * 60 * 1000);
+	
+	public static String getCltDaysPeriod() {
+		
+		
+		
+		return null;
+	}
 
 	 /**
      * Convert a millisecond duration to a string format
@@ -67,6 +74,18 @@ public class DateUtility {
 		return convertMillisToDate(plusedDate);
 	}
 
+	public static int minusDateMonth(Date factor1, Date factor2) {
+
+		long d1 = factor1.getTime();
+		long d2 = factor2.getTime();
+
+		long minusedDate = d1 - d2;
+		
+		long diffDay = minusedDate / DIFF_DAYS;
+
+		return (int) diffDay;
+	}
+
 	public static int minusDateDays(Date factor1, Date factor2) {
 
 		long d1 = factor1.getTime();
@@ -75,6 +94,30 @@ public class DateUtility {
 		long minusedDate = d1 - d2;
 		
 		long diffDay = minusedDate / DIFF_DAYS;
+
+		return (int) diffDay;
+	}
+
+	public static int minusDateHour(Date factor1, Date factor2) {
+
+		long d1 = factor1.getTime();
+		long d2 = factor2.getTime();
+
+		long minusedDate = d1 - d2;
+		
+		long diffDay = minusedDate / HOUR_IN_MILLIS;
+
+		return (int) diffDay;
+	}
+
+	public static int minusDateMinutes(Date factor1, Date factor2) {
+
+		long d1 = factor1.getTime();
+		long d2 = factor2.getTime();
+
+		long minusedDate = d1 - d2;
+		
+		long diffDay = minusedDate / MINUTE_IN_MILLIS;
 
 		return (int) diffDay;
 	}
@@ -234,6 +277,17 @@ public class DateUtility {
 		return calDay.getTime();
 	}
 
+	public static Calendar getCalendarToday(int year, int month, int day, int hour) {
+
+		Calendar calDay = Calendar.getInstance();
+		calDay.set(year, month-1, day);
+		calDay.set(Calendar.HOUR_OF_DAY, hour);
+		calDay.set(Calendar.MINUTE, 0);
+		calDay.set(Calendar.SECOND, 0);
+
+		return calDay;
+	}
+
 	public static Date getEndToday(int year, int month, int date, int hour) {
 
 		Calendar calDay = Calendar.getInstance();
@@ -383,6 +437,27 @@ public class DateUtility {
 		calDay.setTimeInMillis(currentMillis);
 
 		return calDay.getTime();
+	}
+
+	public static Date getNowTime(Calendar calendar) {
+		long currentMillis = 0;
+
+		// Set two hour
+		currentMillis = System.currentTimeMillis();
+		calendar.setTimeInMillis(currentMillis);
+
+		return calendar.getTime();
+	}
+
+	public static Calendar getNowCalendar() {
+		long currentMillis = 0;
+
+		// Set two hour
+		currentMillis = System.currentTimeMillis();
+		Calendar calDay = Calendar.getInstance();
+		calDay.setTimeInMillis(currentMillis);
+
+		return calDay;
 	}
 
 	public static Date getNowTimeGregorian(String timezone) {

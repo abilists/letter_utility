@@ -26,6 +26,9 @@ public class DigitalUtilityTest {
 		try {
 			String diges = DigitalUtility.createDigestByIdentity("admin");
 			System.out.println("diges => " + diges);
+			
+			System.out.println(">>>>" + System.currentTimeMillis());
+			
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

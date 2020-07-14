@@ -1,12 +1,15 @@
 package io.utility.letter;
 
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -15,12 +18,13 @@ public class DateUtilityTest {
 
 	@BeforeClass
 	public static void beforeClass() {
-		System.out.println("This is the first excuted");
+		// System.out.println("This is the first excuted");
 	}
 
 	@Before
 	public void before() {
-		System.out.println("Before");
+		SimpleDateFormat format	= new SimpleDateFormat("yyyy-MM-dd");
+		String date = format.format(DateUtility.getEndDayOfMonth(-12));
 	}
 
 	// @Test
@@ -40,15 +44,21 @@ public class DateUtilityTest {
 		System.out.println("This is the test");
 	}
 
-	//@Test
+	@Test
 	public void formatDateTest() {
 		
 		try {
 
-			Date date = DateUtility.getNowTime();
-			String formatedDate = DateUtility.formatDate(date, "Y");
+			Date nowDate = DateUtility.getNowTime();
+			long lngNowTime = nowDate.getTime();
+			
+			Date cmdDate = DateUtility.getDaySet(2020, 6, 18, 22, 50, 0);
+			long lngCmdDate = cmdDate.getTime(); 
 
-			System.out.println(formatedDate);
+			int diffDays = DateUtility.minusDateMinutes(nowDate, cmdDate);
+
+			System.out.println("test => " + diffDays);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -62,7 +72,6 @@ public class DateUtilityTest {
 		try {
 
 			long longDate = 33060000;
-
 			long diffHours = longDate / (60 * 60 * 1000) % 24;
 
 			System.out.println(diffHours);
@@ -74,18 +83,18 @@ public class DateUtilityTest {
 	}
 	
 	// @Test
-	public void calculateMonthPeriodTest() {
+	public void cltTimePeriodTest() {
 		Date days = DateUtility.getDayInMillisBefore(30);
 		String strDays = DateUtility.formatDate(days, "yyyy-MM-dd");
 		System.out.println("days = " + strDays);
 	}
 
-	@Test
+	// @Test
 	public void cltDaysPeriodTest() {
 		Date days1 = DateUtility.getDayInMillisBefore(2);
-		System.out.println("Last day = " + DateUtility.formatDate(days1, "yyyy-MM-dd"));
+		System.out.println("days1 = " + DateUtility.formatDate(days1, "yyyy-MM-dd"));
 		Date days2 = DateUtility.getDayInMillisBefore(1);
-		System.out.println("Today = " + DateUtility.formatDate(days2, "yyyy-MM-dd"));
+		System.out.println("days2 = " + DateUtility.formatDate(days2, "yyyy-MM-dd"));
 		
 		System.out.println("========================================================= start ");
 		long days3 = DateUtility.minusDateDays(days2, days1);
@@ -96,9 +105,17 @@ public class DateUtilityTest {
 		System.out.println("========================================================= end ");
 	}
 
+	@Test
+	public void getCalendarTodayTest() {
+		Calendar clr = DateUtility.getCalendarToday(2020, 07, 10, 0);
+		int strWeek = clr.get(Calendar.DAY_OF_WEEK);
+		System.out.println("strWeek => " + strWeek);
+		assertEquals(6, strWeek);
+	}
+
 	@After
 	public void after() {
-		System.out.println("Before");
+		// System.out.println("Before");
 	}
 
 	@AfterClass
