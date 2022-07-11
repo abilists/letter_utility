@@ -19,9 +19,6 @@ public class DateUtility {
 	public static long DIFF_DAYS = (24 * 60 * 60 * 1000);
 	
 	public static String getCltDaysPeriod() {
-		
-		
-		
 		return null;
 	}
 
@@ -262,6 +259,26 @@ public class DateUtility {
 		calDay.set(Calendar.HOUR_OF_DAY, hour);
 		calDay.set(Calendar.MINUTE, minute);
 		calDay.set(Calendar.SECOND, second);
+
+		return calDay.getTime();
+	}
+
+	public static Date getDaySet(String strDate) {
+		
+		if(strDate == null || strDate.length() < 12) {
+			return null;
+		}
+
+		String strYear = strDate.substring(0, 4);
+		String strMonth = strDate.substring(4, 6);
+		String strDay = strDate.substring(6, 8);
+		String strHousr = strDate.substring(8, 10);
+		String strMinute = strDate.substring(10, 12);
+		
+		Calendar calDay = Calendar.getInstance();
+		calDay.set(Integer.parseInt(strYear), Integer.parseInt(strMonth)-1, Integer.parseInt(strDay));
+		calDay.set(Calendar.HOUR_OF_DAY, Integer.parseInt(strHousr));
+		calDay.set(Calendar.MINUTE, Integer.parseInt(strMinute));
 
 		return calDay.getTime();
 	}

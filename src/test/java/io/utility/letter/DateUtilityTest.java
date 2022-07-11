@@ -27,15 +27,30 @@ public class DateUtilityTest {
 		String date = format.format(DateUtility.getEndDayOfMonth(-12));
 	}
 
-	// @Test
+	//@Test
 	public void testOne() {
 		
 		try {
 
-			System.out.println("abcd 1 >>> " + DateUtility.getNowMonth(-1));
+			Date startDate = DateUtility.getNowTime();
+			long startTime = startDate.getTime();
+
+			System.out.println("abcd 1 >>> " + startTime);
 			SimpleDateFormat format	= new SimpleDateFormat("yyyy-MM-dd");
 			String date = format.format(DateUtility.getStartDayOfMonth(-1));
-			System.out.println("abcd 2 >>> " + date);
+			
+			Thread.sleep(2000);
+
+			Date endDate = DateUtility.getNowTime();
+			long endTime = endDate.getTime();
+
+			System.out.println("abcd 2 >>> " + endTime);
+
+			long diff = endTime - startTime;
+			
+			System.out.println("abcd 3 >>> " + diff);
+			
+			System.out.println("abcd 4 >>> " + DateUtility.getDurationBreakdown(diff));
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -44,7 +59,7 @@ public class DateUtilityTest {
 		System.out.println("This is the test");
 	}
 
-	@Test
+	//@Test
 	public void formatDateTest() {
 		
 		try {
@@ -105,12 +120,41 @@ public class DateUtilityTest {
 		System.out.println("========================================================= end ");
 	}
 
-	@Test
+	// @Test
 	public void getCalendarTodayTest() {
 		Calendar clr = DateUtility.getCalendarToday(2020, 07, 10, 0);
 		int strWeek = clr.get(Calendar.DAY_OF_WEEK);
 		System.out.println("strWeek => " + strWeek);
 		assertEquals(6, strWeek);
+	}
+
+	@Test
+	public void getDaySet() {
+		
+		
+		String strDate = "202207052359";
+		
+		
+		String strYear = strDate.substring(0, 4);
+		System.out.println("strYear => " + strYear);
+		
+		String strMonth = strDate.substring(4, 6);
+		System.out.println("strMonth => " + strMonth);
+
+		String strDay = strDate.substring(6, 8);
+		System.out.println("strDay => " + strDay);
+		
+		String strHousr = strDate.substring(8, 10);
+		System.out.println("strMonth => " + strHousr);
+		
+		String strMinute = strDate.substring(10, 12);
+		System.out.println("strMinute => " + strMinute);
+		
+		
+		
+		Date date = DateUtility.getDaySet(strDate);
+		String rtsDate = DateUtility.formatDate(date, "yyyy-MM-dd HH:mm:ss");
+		System.out.println("rtsDate => " + rtsDate);
 	}
 
 	@After
