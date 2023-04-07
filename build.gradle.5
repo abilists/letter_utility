@@ -1,0 +1,57 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+version = '0.0.8'
+
+buildscript {
+	repositories { 
+		mavenCentral()
+		maven {
+        	url "https://plugins.gradle.org/m2/"
+		}
+	}
+}
+
+archivesBaseName = 'letter-utility'
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Letter-Utility', 'Implementation-Version': version
+    }
+}
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+}
+
+dependencies {
+	compile 'org.slf4j:slf4j-api:1.7.32'
+	runtime 'org.slf4j:jcl-over-slf4j:1.7.32'
+	compile 'ch.qos.logback:logback-core:1.2.9'
+	compile 'ch.qos.logback:logback-classic:1.2.9'
+	compile 'commons-lang:commons-lang:2.6'
+	compile "org.freemarker:freemarker:2.3.28"
+	testCompile "junit:junit:4.+"
+}
+
+// $ gradle install
+configure(install.repositories.mavenInstaller) {
+    pom.project {
+		group = 'io.utility'
+		artifactId 'letter'
+        inceptionYear '2017'
+        packaging 'jar'
+        licenses {
+            license {
+                name 'Eclipse Public License (Version 1.0)'
+                url 'http://www.eclipse.org/legal/epl-v10.html'
+                distribution 'repo'
+            }
+        }
+    }
+}
