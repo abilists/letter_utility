@@ -22,7 +22,7 @@ publishing {
             artifactId = 'letter'
             version = project.version
             
-            artifact 'build/libs/letter-' + project.version + '.jar'
+            artifact 'build/libs/letter_utility-' + project.version + '.jar'
         }
     }
 
