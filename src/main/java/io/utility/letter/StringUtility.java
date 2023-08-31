@@ -161,7 +161,8 @@ public class StringUtility {
 	/**
 	 * Return random unique number
 	 * 
-	 * @param maxNum is DIGIT number
+	 * @param maxNum is DIGIT number size
+	 * @param blnDuplicate is to duplicate DIGIT number
 	 * @return
 	 * @throws Exception
 	 */
