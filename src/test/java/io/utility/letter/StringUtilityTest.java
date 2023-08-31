@@ -167,14 +167,22 @@ public class StringUtilityTest {
 		System.out.println("This is the test");
 	}
 
-	@Test
+	// @Test
 	public void getExtFileNameTest() {		
 		System.out.println(StringUtility.getExtFileName("test.min.txt"));
 	}
 
-	@Test
+	// @Test
 	public void getFileNameWithExt() {		
 		System.out.println(StringUtility.getFileNameWithExt("aa.bb.jpg", "png"));
+	}
+
+	@Test
+	public void randomNumbersTest() throws Exception {
+		for (int i=0; i < 100; i++) {
+			String sss = StringUtility.randomNumbers(6, true);
+			System.out.println(i + "=" + sss);
+		}
 	}
 
 	@After

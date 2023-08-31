@@ -158,4 +158,45 @@ public class StringUtility {
     	return source;
 	}
 
+	/**
+	 * Return random unique number
+	 * 
+	 * @param maxNum is DIGIT number
+	 * @return
+	 * @throws Exception
+	 */
+	public static String randomNumbers(int maxNum, boolean blnDuplicate) throws Exception {
+
+		List<String> result = new ArrayList<String>();
+		StringBuffer sb = new StringBuffer();
+
+		for(int i = 0; i < maxNum; i++) {
+
+			double intRandom = Math.floor(Math.random() * 9) + 1;
+
+			String item = String.valueOf((int)intRandom);
+			
+			if(blnDuplicate) {
+				boolean duplicate = false;
+				for (String str : result) {
+					if (str.equals(item)) {
+						duplicate = true;
+						break;
+					}
+				}
+				if (!duplicate) {
+					result.add(item);
+					sb.append(item);
+				} else {
+					// If a string is duplicated, Just again with minus 1
+					i--;
+				}
+			} else {
+				sb.append(item);
+			}
+		}
+
+		return sb.toString();
+	}
+
 }
