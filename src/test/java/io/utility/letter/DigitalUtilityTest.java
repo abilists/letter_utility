@@ -35,6 +35,25 @@ public class DigitalUtilityTest {
 		}
 	}
 
+	@Test
+	public void testCreateDigestByIdentity2() {
+
+		String strTime = String.valueOf(System.currentTimeMillis());
+		
+		try {
+			String diges = DigitalUtility.createDigestByIdentity(strTime, DigitalUtility.HASH_ALGORITHM_SHA256);
+			System.out.println("SHA256 => " + diges);
+			System.out.println("SHA256 size=> " + diges.length());
+
+			String strBase64 = DigitalUtility.encodeByBase64(strTime, DigitalUtility.HASH_ALGORITHM_SHA256);
+			System.out.println("strBase64 => " + strBase64);
+
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	@After
 	public void after() {
 		System.out.println("Before");
