@@ -1,6 +1,10 @@
 package io.utility.letter;
 
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.util.Base64;
+
+import javax.crypto.SecretKey;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -8,7 +12,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import io.jsonwebtoken.Jwts;
+
 public class DigitalUtilityTest {
+	private static final SecureRandom secureRandom = new SecureRandom(); //threadsafe
+	private static final Base64.Encoder base64Encoder = Base64.getUrlEncoder(); //threadsafe
 
 	@BeforeClass
 	public static void beforeClass() {
@@ -19,7 +27,11 @@ public class DigitalUtilityTest {
 	public void before() {
 		System.out.println("Before");
 	}
-
+	public static String generateNewToken() {
+	    byte[] randomBytes = new byte[64];
+	    secureRandom.nextBytes(randomBytes);
+	    return base64Encoder.encodeToString(randomBytes);
+	}
 	@Test
 	public void testCreateDigestByIdentity() {
 		
@@ -47,6 +59,12 @@ public class DigitalUtilityTest {
 
 			String strBase64 = DigitalUtility.encodeByBase64(strTime, DigitalUtility.HASH_ALGORITHM_SHA256);
 			System.out.println("strBase64 => " + strBase64);
+
+			SecretKey key = Jwts.SIG.HS256.key().build();
+			System.out.println("key = " + key.getEncoded().toString());
+
+			String jws = Jwts.builder().subject("Joe").signWith(key).compact();
+			System.out.println("jws = " + jws);
 
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block

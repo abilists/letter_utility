@@ -11,7 +11,7 @@ repositories {
     mavenCentral()
 }
 
-version = '0.1.1'
+version = '0.1.2'
 
 // gradle publish
 publishing {
@@ -54,6 +54,10 @@ dependencies {
 	runtimeOnly 'org.slf4j:jcl-over-slf4j:' + slf4jVersion
 	implementation 'ch.qos.logback:logback-core:' + logbackVersion
 	implementation 'ch.qos.logback:logback-classic:' + logbackVersion
+
+	implementation 'io.jsonwebtoken:jjwt-api:0.12.3'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.3'
+	implementation 'io.jsonwebtoken:jjwt-gson:0.12.3'
 
 	implementation 'commons-lang:commons-lang:2.6'
 	implementation "org.freemarker:freemarker:2.3.28"
