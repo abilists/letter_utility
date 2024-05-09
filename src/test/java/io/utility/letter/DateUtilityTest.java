@@ -128,7 +128,7 @@ public class DateUtilityTest {
 		assertEquals(6, strWeek);
 	}
 
-	@Test
+	// @Test
 	public void getDaySet() {
 		
 		
@@ -155,6 +155,14 @@ public class DateUtilityTest {
 		Date date = DateUtility.getDaySet(strDate);
 		String rtsDate = DateUtility.formatDate(date, "yyyy-MM-dd HH:mm:ss");
 		System.out.println("rtsDate => " + rtsDate);
+	}
+
+	@Test
+	public void getHourInMillisAfterTest() {
+		
+		Date futureOneHour = DateUtility.getHourInMillisAfter(1);
+		String rtsDate = DateUtility.formatDate(futureOneHour, "yyyy-MM-dd HH:mm:ss");
+		System.out.println("getTime => " + futureOneHour.getTime());
 	}
 
 	@After

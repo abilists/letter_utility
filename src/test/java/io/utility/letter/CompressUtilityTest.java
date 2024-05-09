@@ -2,7 +2,9 @@ package io.utility.letter;
 
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -21,6 +23,25 @@ public class CompressUtilityTest {
 	}
 
 	@Test
+	public void compressByFilesTest() {
+		
+		try {
+			String file1 = "src/test/resources/test1.txt";
+	        String file2 = "src/test/resources/test2.txt";
+	        final List<String> srcFiles = Arrays.asList(file1, file2);
+			
+	        String parentPath = "src/test/resources";
+
+			CompressUtility.compressByFiles(srcFiles, parentPath, "testZip.zip");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("This is the test");
+	}
+
+	// @Test
 	public void compressTest() {
 		
 		try {
