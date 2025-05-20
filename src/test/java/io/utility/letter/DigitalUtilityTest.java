@@ -40,7 +40,9 @@ public class DigitalUtilityTest {
 			System.out.println("diges => " + diges);
 			
 			System.out.println(">>>>" + System.currentTimeMillis());
-			
+
+			String sha256 = DigitalUtility.hashBySha256("admin");
+			System.out.println("sha256 >>>>" + sha256);
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -53,11 +55,11 @@ public class DigitalUtilityTest {
 		String strTime = String.valueOf(System.currentTimeMillis());
 		
 		try {
-			String diges = DigitalUtility.createDigestByIdentity(strTime, DigitalUtility.HASH_ALGORITHM_SHA256);
+			String diges = DigitalUtility.createDigestByIdentity("admin", DigitalUtility.HASH_ALGORITHM_SHA256);
 			System.out.println("SHA256 => " + diges);
 			System.out.println("SHA256 size=> " + diges.length());
 
-			String strBase64 = DigitalUtility.encodeByBase64(strTime, DigitalUtility.HASH_ALGORITHM_SHA256);
+			String strBase64 = DigitalUtility.encodeByBase64("admin");
 			System.out.println("strBase64 => " + strBase64);
 
 			SecretKey key = Jwts.SIG.HS256.key().build();

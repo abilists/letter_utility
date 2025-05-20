@@ -1,64 +1,65 @@
-# letter_utility library for Abilists \[ [www.abilists.com](http://www.abilists.com)\]
---------------------------------------------------
+# Letter Utility Library
+
 [![Build Status](https://travis-ci.org/abilists/letter_utility.svg?branch=master)](https://travis-ci.org/abilists/letter_utility)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/abilists/letter_utility)
 
+A comprehensive Java utility library for Abilists [www.abilists.com](http://www.abilists.com) that provides essential tools for project development.
 
-[letter_utility][1] is a collection for helping to develop a project.  
-It is based on [Java8][2] version, It uses some common libraries.
+## Features
 
-Utility_sample is:
+- **DateUtility**: Date manipulation and formatting utilities
+- **DigitalUtility**: Digital data processing tools
+- **EncodingUtility**: Text encoding and decoding utilities
+- **FileUtility**: File handling and management utilities
+- **StringUtility**: String manipulation and processing tools
+- **TemplateUtility**: Template processing and management
 
-  * Free
-  * Easy to use
+## Requirements
 
-How to use
----------------------
-$ gradle install
+- Java 8 or newer
+- Freemarker 2.3.28 or newer
 
-Add the following code into build.gradle in your new project.
+## Installation
+
+### Gradle
+
+Add the following dependency to your `build.gradle`:
+
+```gradle
+dependencies {
+    compile 'io.utility:image:0.0.7'
+}
 ```
-compile 'io.utility:image:0.0.7'
+
+### Manual Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/abilists/letter_utility.git
 ```
 
-Features
--------------
-   * Utile: Letter
-     * DateUtility:
-     * DigitalUtility:
-     * EncodingUtility:
-     * FileUtility:
-     * StringUtility:
-     * TemplateUtility:
+2. Install the library:
+```bash
+gradle install
+```
 
-Build Requirements
-------------------
+## Usage
 
-Freemarker 2.3.28 (or newer)
+The library provides various utility classes that can be imported and used in your Java projects. Each utility class is designed to handle specific types of operations, making your development process more efficient.
 
+## Testing
 
-Runtime Requirements
---------------------
-  * Java8 or newer
+The project uses JUnit for testing. Run the tests using your preferred build tool or IDE.
 
+## Support
 
-Running Tests
---------------------
+For help and support, visit:
+- [Abilists Help Forum](http://www.abilists.com/home/help/)
 
-1. Junit test
+## License
 
+This project is free to use under the terms of its license.
 
-Forum
------
-  * [Abilists Help][3]
+## Contributing
 
-
-Download from Github
---------------------
-
-    $ git clone https://github.com/abilists/letter_utility.git
-
-
-[1]: https://github.com/abilists/letter_utility "letter_utility"
-[2]: https://github.com/ojdkbuild/ojdkbuild "Java8"
-[3]: http://www.abilists.com/home/help/ "Abilists Help"
+Contributions are welcome! Please feel free to submit a Pull Request.
