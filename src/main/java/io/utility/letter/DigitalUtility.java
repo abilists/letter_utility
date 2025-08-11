@@ -3,12 +3,31 @@ package io.utility.letter;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Base64;
 
 public class DigitalUtility {
 
+	// Reuse one SecureRandom instance to avoid re-seeding delay
+    private static final SecureRandom SECURE_RANDOM = new SecureRandom();
+
+    public static int SECURE_RANDOM_BYTE_SIZE512 = 512;
+    public static int SECURE_RANDOM_BYTE_SIZE256 = 256;
+    public static int SECURE_RANDOM_BYTE_SIZE128 = 128;
+    public static int SECURE_RANDOM_BYTE_SIZE64 = 64;
 	public static String HASH_ALGORITHM_MD5 = "MD5";
 	public static String HASH_ALGORITHM_SHA256 = "SHA-256";
+
+    /**
+     * Convert byte array to HEX string.
+     */
+    private static String bytesToHex(byte[] bytes) {
+        StringBuilder sb = new StringBuilder(bytes.length * 2);
+        for (byte b : bytes) {
+            sb.append(String.format("%02x", b));
+        }
+        return sb.toString();
+    }
 
 	public static final String createDigestByIdentity(final String identity) 
 			throws NoSuchAlgorithmException {
@@ -67,6 +86,14 @@ public class DigitalUtility {
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException("SHA-256 algorithm not found!", e);
         }
+    }
+
+    // Generate a 1024-bit(128) cryptographically secure token
+    public static String generateToken(int intByte) throws NoSuchAlgorithmException {
+        byte[] randomBytes = new byte[intByte];
+        SECURE_RANDOM.nextBytes(randomBytes);
+
+        return bytesToHex(randomBytes);
     }
 
 }

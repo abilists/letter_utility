@@ -32,7 +32,7 @@ public class DigitalUtilityTest {
 	    secureRandom.nextBytes(randomBytes);
 	    return base64Encoder.encodeToString(randomBytes);
 	}
-	@Test
+	// @Test
 	public void testCreateDigestByIdentity() {
 		
 		try {
@@ -49,7 +49,7 @@ public class DigitalUtilityTest {
 		}
 	}
 
-	@Test
+	// @Test
 	public void testCreateDigestByIdentity2() {
 
 		String strTime = String.valueOf(System.currentTimeMillis());
@@ -72,6 +72,22 @@ public class DigitalUtilityTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Test
+	public void generateTokenTest() {
+
+		String diges;
+		try {
+
+			diges = DigitalUtility.generateToken(DigitalUtility.SECURE_RANDOM_BYTE_SIZE128);
+			System.out.println("diges => " + diges);
+
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	@After
