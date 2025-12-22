@@ -1,24 +1,21 @@
 package io.utility.letter;
 
-
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class CompressUtilityTest {
 
-	@BeforeClass
+	@BeforeAll
 	public static void beforeClass() {
 	}
 
-	@Before
+	@BeforeEach
 	public void before() {
 	}
 
@@ -62,12 +59,12 @@ public class CompressUtilityTest {
 		System.out.println("This is the test");
 	}
 
-	@After
+	@AfterEach
 	public void after() {
 		// System.out.println("Before");
 	}
 
-	@AfterClass
+	@AfterAll
 	public static void afterClass() {
 		System.out.println("This is the end excuted");
 	}

@@ -1,12 +1,12 @@
 package io.utility.letter;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -16,12 +16,12 @@ import java.util.TimeZone;
 
 public class DateUtilityTest {
 
-	@BeforeClass
+	@BeforeAll
 	public static void beforeClass() {
 		// System.out.println("This is the first excuted");
 	}
 
-	@Before
+	@BeforeEach
 	public void before() {
 		SimpleDateFormat format	= new SimpleDateFormat("yyyy-MM-dd");
 		String date = format.format(DateUtility.getEndDayOfMonth(-12));
@@ -47,9 +47,11 @@ public class DateUtilityTest {
 		assertEquals("2 days 03:45:00", result);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void testGetDurationBreakdownNegative() {
-		DateUtility.getDurationBreakdown(-1000);
+		assertThrows(IllegalArgumentException.class, () -> {
+			DateUtility.getDurationBreakdown(-1000);
+		});
 	}
 
 	@Test
@@ -65,9 +67,11 @@ public class DateUtilityTest {
 		assertEquals("1:05", result);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void testConvertMillisToStringNegative() {
-		DateUtility.convertMillisToString(-1000);
+		assertThrows(IllegalArgumentException.class, () -> {
+			DateUtility.convertMillisToString(-1000);
+		});
 	}
 
 	@Test
@@ -92,9 +96,11 @@ public class DateUtilityTest {
 		assertEquals(45, resultCal.get(Calendar.MINUTE));
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void testPlusDateNull() {
-		DateUtility.plusDate(null, new Date());
+		assertThrows(IllegalArgumentException.class, () -> {
+			DateUtility.plusDate(null, new Date());
+		});
 	}
 
 	@Test
@@ -319,12 +325,12 @@ public class DateUtilityTest {
 		assertEquals(2, result);
 	}
 	
-	@After
+	@AfterEach
 	public void after() {
 		// System.out.println("Before");
 	}
 
-	@AfterClass
+	@AfterAll
 	public static void afterClass() {
 		System.out.println("This is the end excuted");
 	}

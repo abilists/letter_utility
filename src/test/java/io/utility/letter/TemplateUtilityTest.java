@@ -1,22 +1,22 @@
 package io.utility.letter;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import io.utility.BasicTest;
 import io.utility.letter.bean.TemplateModel;
 
 public class TemplateUtilityTest extends BasicTest {
 
-	@BeforeClass
+	@BeforeAll
 	public static void beforeClass() {
 		System.out.println("This is the first excuted");
 	}
 
-	@Before
+	@BeforeEach
 	public void before() {
 		System.out.println("Before");
 	}
@@ -48,12 +48,12 @@ public class TemplateUtilityTest extends BasicTest {
 		System.out.println("This is the test");
 	}
 
-	@After
+	@AfterEach
 	public void after() {
 		System.out.println("Before");
 	}
 
-	@AfterClass
+	@AfterAll
 	public static void afterClass() {
 		System.out.println("This is the end excuted");
 	}

@@ -5,20 +5,20 @@ import java.io.LineNumberReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class StringUtilityTest {
 
-	@BeforeClass
+	@BeforeAll
 	public static void beforeClass() {
 		System.out.println("This is the first excuted");
 	}
 
-	@Before
+	@BeforeEach
 	public void before() {
 		System.out.println("Before");
 	}
@@ -69,15 +69,15 @@ public class StringUtilityTest {
 
 				while((strReadResult = lnReader.readLine()) != null) {
 					String [] strLine = strReadResult.split(",");
-					// �뿃 - no, so pass  university for graduate school
-					if(strLine.length < 2 || !strLine[1].trim().equals("�뿃")) {
-						System.out.println("�뿃 - no");
+					// 뿃 - no, so pass  university for graduate school
+					if(strLine.length < 2 || !strLine[1].trim().equals("뿃")) {
+						System.out.println("뿃 - no");
 						continue;
 					}
 
-//					// �뿃 - no, so pass graduate school for university 
-//					if(strLine.length > 1 && strLine[1].trim().equals("�뿃")) {
-//						// System.out.println("�뿃 - is");
+//					// 뿃 - no, so pass graduate school for university 
+//					if(strLine.length > 1 && strLine[1].trim().equals("뿃")) {
+//						// System.out.println("뿃 - is");
 //						continue;
 //					}
 
@@ -185,12 +185,12 @@ public class StringUtilityTest {
 		}
 	}
 
-	@After
+	@AfterEach
 	public void after() {
 		System.out.println("Before");
 	}
 
-	@AfterClass
+	@AfterAll
 	public static void afterClass() {
 		System.out.println("This is the end excuted");
 	}

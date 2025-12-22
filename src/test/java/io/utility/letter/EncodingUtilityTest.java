@@ -1,18 +1,18 @@
 package io.utility.letter;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 
 public class EncodingUtilityTest {
 
-	@BeforeClass
+	@BeforeAll
 	public static void beforeClass() {
 		System.out.println("This is the first excuted");
 	}
 
-	@Before
+	@BeforeEach
 	public void before() {
 		System.out.println("Before");
 	}
@@ -24,12 +24,12 @@ public class EncodingUtilityTest {
 		System.out.println("This is the test");
 	}
 
-	@After
+	@AfterEach
 	public void after() {
 		System.out.println("Before");
 	}
 
-	@AfterClass
+	@AfterAll
 	public static void afterClass() {
 		System.out.println("This is the end excuted");
 	}
