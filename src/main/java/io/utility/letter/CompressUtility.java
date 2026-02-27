@@ -76,13 +76,13 @@ public class CompressUtility {
     }
 	
 	/**
-	 * Compress String data
+	 * Compress byte[] data
 	 * 
 	 * @param data original String data
 	 * @return
 	 * @throws Exception
 	 */
-	public static byte[] compress(final String data) throws Exception {
+	public static byte[] compress(final byte[] data) throws Exception {
 
 		try(
 			ByteArrayOutputStream baOut = new ByteArrayOutputStream();
@@ -90,7 +90,7 @@ public class CompressUtility {
 				{def.setLevel(DEFAULT_VALUE);}
 			};
 		) {
-			gzip.write(data.getBytes(StandardCharsets.UTF_8));
+			gzip.write(data);
 			gzip.finish();
 			gzip.flush();
 			return baOut.toByteArray();
@@ -102,13 +102,77 @@ public class CompressUtility {
 	}
 
 	/**
+	 * Compress String data
+	 * 
+	 * @param data original String data
+	 * @return
+	 * @throws Exception
+	 */
+	public static byte[] compress(final String data) throws Exception {
+		return compress(data.getBytes(StandardCharsets.UTF_8));
+	}
+
+	/**
+	 * DeCompress byte[] data
+	 * 
+	 * @param data Ziped
+	 * @return
+	 * @throws Exception
+	 */
+	public static byte[] deCompressByte(final byte[] data) throws Exception {
+
+	    if ((data == null) || (data.length == 0)) {
+	        throw new IllegalArgumentException("Cannot unzip null or empty bytes");
+	    }
+
+		if (!isZipped(data)) {
+	        return new byte[1024];
+	    }
+
+		ByteArrayInputStream baIn = null;
+		GZIPInputStream gzip = null;
+		InputStreamReader insReader = null;
+		BufferedReader bufferedReader = null;
+		try {
+			baIn = new ByteArrayInputStream(data);
+			gzip = new GZIPInputStream(baIn);
+			insReader = new InputStreamReader(gzip, StandardCharsets.UTF_8);
+			bufferedReader = new BufferedReader(insReader);
+
+            StringBuilder output = new StringBuilder();
+            String line;
+            while((line = bufferedReader.readLine()) != null) {
+              output.append(line);
+            }
+
+            return output.toString().getBytes();
+		} catch (Exception e) {
+			throw new RuntimeException("Failed to unzip content", e);
+		}finally {
+			if(bufferedReader != null) {
+				bufferedReader.close();
+			}
+			if(insReader != null) {
+				insReader.close();
+			}
+			if(gzip != null) {
+				gzip.close();
+			}
+			if(baIn != null) {
+				baIn.close();
+			}
+		}
+
+	}
+
+	/**
 	 * DeCompress String data
 	 * 
 	 * @param data Ziped
 	 * @return
 	 * @throws Exception
 	 */
-	public static String deCompress(final byte[] data) throws Exception {
+	public static String deCompressString(final byte[] data) throws Exception {
 
 	    if ((data == null) || (data.length == 0)) {
 	        throw new IllegalArgumentException("Cannot unzip null or empty bytes");

@@ -47,7 +47,7 @@ public class CompressUtilityTest {
 
 			System.out.println("byteArray=>" + byteArray);
 
-			String originString = CompressUtility.deCompress(byteArray);
+			String originString = CompressUtility.deCompressString(byteArray);
 
 			// System.out.println("==" + new String(byteArray) + "==");
 			System.out.println(originString);
